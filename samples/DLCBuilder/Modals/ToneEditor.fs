@@ -357,14 +357,35 @@ let view state dispatch (tone: Tone) =
                             ()
                         | Some gear ->
                             // Remove Button
+                            let isEQ = DLCBuilder.Controls.VisualEQParser.isEQGear gear
                             yield
-                                Button.create [
-                                    Button.margin (0., 2.)
-                                    Button.content (translate "Remove")
-                                    Button.isVisible (match state.SelectedGearSlot with Amp | Cabinet -> false | _ -> true)
-                                    Button.onClick (fun _ -> RemovePedal |> EditTone |> dispatch)
+                                StackPanel.create [
+                                    StackPanel.orientation Orientation.Horizontal
+                                    StackPanel.children [
+                                        Button.create [
+                                            Button.margin (0., 2.)
+                                            Button.content (translate "Remove")
+                                            Button.isVisible (match state.SelectedGearSlot with Amp | Cabinet -> false | _ -> true)
+                                            Button.onClick (fun _ -> RemovePedal |> EditTone |> dispatch)
+                                        ]
+                                        if isEQ then
+                                            Button.create [
+                                                Button.margin (8., 2., 0., 2.)
+                                                Button.content (if state.ShowVisualEQ then "List View" else "Graphical EQ")
+                                                Button.onClick (fun _ -> dispatch ToggleVisualEQ)
+                                            ]
+                                    ]
                                 ]
-                            yield! knobSliders state dispatch repository tone.GearList gear
+                            
+                            if isEQ && state.ShowVisualEQ then
+                                let knobValues = getKnobValuesForGear tone.GearList state.SelectedGearSlot |> Option.defaultValue Map.empty
+                                yield DLCBuilder.Controls.VisualEQGraph.create [
+                                    DLCBuilder.Controls.VisualEQGraph.gearData (Some gear)
+                                    DLCBuilder.Controls.VisualEQGraph.knobValues knobValues
+                                    DLCBuilder.Controls.VisualEQGraph.onKnobValueChanged (SetKnobValue >> EditTone >> dispatch)
+                                ]
+                            else
+                                yield! knobSliders state dispatch repository tone.GearList gear
                     ]
                 ]
             ]
