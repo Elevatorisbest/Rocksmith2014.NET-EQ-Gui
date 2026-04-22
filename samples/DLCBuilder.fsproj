@@ -1,0 +1,135 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <Platforms>x64</Platforms>
+    <Authors>iminashi</Authors>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Product>Rocksmith 2014 DLC Builder</Product>
+    <AssemblyTitle>Rocksmith 2014 DLC Builder</AssemblyTitle>
+    <Copyright>Copyright © 2021</Copyright>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+    <WarnOn>1182;3390;$(WarnOn)</WarnOn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Version>3.5.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="img\issue_linknext_slide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\issue_linknext_bend.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\issue_chord_anchor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\issue_bendvalues.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\mover3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\customevent_so.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="README.md">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <Content Include="ReadMe.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="RELEASE_NOTES.md">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <AvaloniaResource Include="Assets\coverart_placeholder.png" />
+    <EmbeddedResource Include="Assets\icon.ico" />
+    <EmbeddedResource Include="i18n\zh-CN.json" />
+    <EmbeddedResource Include="i18n\en.json" />
+    <EmbeddedResource Include="i18n\es.json" />
+    <EmbeddedResource Include="i18n\fi.json" />
+    <EmbeddedResource Include="i18n\jp.json" />
+    <AvaloniaResource Include="Styles.xaml" />
+    <Compile Include="Localization.fs" />
+    <Compile Include="FocusHelper.fs" />
+    <Compile Include="Media.fs" />
+    <Compile Include="AvaloniaBitmapLoader.fs" />
+    <Compile Include="Dialogs.fs" />
+    <Compile Include="ArrangementNameUtils.fs" />
+    <Compile Include="Controls\FuncUIExtensions.fs" />
+    <Compile Include="Controls\Helpers.fs" />
+    <Compile Include="Controls\FixedTextBox.fs" />
+    <Compile Include="Controls\FixedAutoCompleteBox.fs" />
+    <Compile Include="Controls\FixedSlider.fs" />
+    <Compile Include="Controls\ToneKnobSlider.fs" />
+    <Compile Include="Controls\VisualEQGraph.fs" />
+    <Compile Include="Controls\FixedComboBox.fs" />
+    <Compile Include="Controls\FixedNumericUpDown.fs" />
+    <Compile Include="Controls\LyricsCreatorTextBlock.fs" />
+    <Compile Include="Controls\ToneImportListBox.fs" />
+    <Compile Include="Controls\AutoFocusSearchBox.fs" />
+    <Compile Include="Controls\ListBoxEx.fs" />
+    <Compile Include="Controls\HelpButton.fs" />
+    <Compile Include="Controls\TitleBarButtons.fs" />
+    <Compile Include="Controls\TitledTextBox.fs" />
+    <Compile Include="Menus.fs" />
+    <Compile Include="Modals\AdditionalMetaDataEditor.fs" />
+    <Compile Include="Modals\AbnormalExitMessage.fs" />
+    <Compile Include="Modals\IdRegenerationConfirmation.fs" />
+    <Compile Include="Modals\AboutMessage.fs" />
+    <Compile Include="Modals\ConfigEditor.fs" />
+    <Compile Include="Modals\DeleteConfirmation.fs" />
+    <Compile Include="Modals\ErrorMessage.fs" />
+    <Compile Include="Modals\ExitConfirmation.fs" />
+    <Compile Include="Modals\ImportTonesSelector.fs" />
+    <Compile Include="Modals\IssueViewer.fs" />
+    <Compile Include="Modals\JapaneseLyricsCreatorModal.fs" />
+    <Compile Include="Modals\LyricsViewer.fs" />
+    <Compile Include="Modals\PitchShifter.fs" />
+    <Compile Include="Modals\PreviewStartSelector.fs" />
+    <Compile Include="Modals\ToneCollectionModal.fs" />
+    <Compile Include="Modals\ToneEditor.fs" />
+    <Compile Include="Modals\InstrumentalXmlDetails.fs" />
+    <Compile Include="Modals\ProfileCleanerModal.fs" />
+    <Compile Include="Modals\UpdateInfoMessage.fs" />
+    <Compile Include="Views\Templates.fs" />
+    <Compile Include="Views\AudioControls.fs" />
+    <Compile Include="Views\ProjectDetails.fs" />
+    <Compile Include="Views\InstrumentalDetails.fs" />
+    <Compile Include="Views\VocalsDetails.fs" />
+    <Compile Include="Views\ToneDetails.fs" />
+    <Compile Include="Views\Main.fs" />
+    <Compile Include="HotKeys.fs" />
+    <Compile Include="MainWindow.fs" />
+    <Compile Include="App.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="Avalonia.FuncUI" />
+    <PackageReference Include="Avalonia.FuncUI.Elmish" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="FSharp.Core" />
+    <PackageReference Include="Pfim" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Rocksmith2014.Audio\Rocksmith2014.Audio.fsproj" />
+    <ProjectReference Include="..\..\src\Rocksmith2014.DLCProject\Rocksmith2014.DLCProject.fsproj" />
+    <ProjectReference Include="..\..\src\Rocksmith2014.XML.Processing\Rocksmith2014.XML.Processing.fsproj" />
+    <ProjectReference Include="..\..\src\Rocksmith2014.XML\Rocksmith2014.XML.csproj" />
+    <ProjectReference Include="..\DLCBuilder.Domain\DLCBuilder.Domain.fsproj" />
+  </ItemGroup>
+</Project>
