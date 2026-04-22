@@ -1,3 +1,11 @@
+### This fork adds an experimental GUI for EQ effects set to mimic those from popular DAWs like Ableton, Logic Pro, FL Studio etc.
+
+
+
+https://github.com/user-attachments/assets/3fd1babf-15b1-437c-845e-ce96f5576347
+
+
+
 # Libraries for Rocksmith 2014 CDLC
 
 ![Tests (Linux)](https://github.com/iminashi/Rocksmith2014.NET/actions/workflows/test.yml/badge.svg) ![Publish macOS version](https://github.com/iminashi/Rocksmith2014.NET/actions/workflows/dlcbuilder_mac.yml/badge.svg) ![Publish Linux version](https://github.com/iminashi/Rocksmith2014.NET/actions/workflows/dlcbuilder_linux.yml/badge.svg)
