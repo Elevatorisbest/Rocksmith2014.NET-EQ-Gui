@@ -674,6 +674,9 @@ let update (msg: Msg) (state: State) =
             ()
 
         exit state
+    
+    | ToggleVisualEQ ->
+        { state with ShowVisualEQ = not state.ShowVisualEQ }, Cmd.none
 
     | SetAvailableUpdate (Error _) ->
         // Don't show an error message if the update check fails when starting the program

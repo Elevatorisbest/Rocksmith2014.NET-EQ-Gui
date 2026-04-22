@@ -58,6 +58,7 @@ let init localizer albumArtLoader databaseConnector exitHandler args =
       ArrangementIssues = Map.empty
       AvailableUpdate = None
       ToneGearRepository = None
+      ShowVisualEQ = false
       AlbumArtLoadTime = None
       QuickEditData = None
       ImportedBuildToolVersion = None

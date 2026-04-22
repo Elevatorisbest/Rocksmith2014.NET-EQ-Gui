@@ -376,6 +376,7 @@ type Msg =
     | StartFontGenerator
     | FontGenerated of arrangementId: ArrangementId * glyphsXmlPath: string
     | ExitConfirmed of saveProject: bool
+    | ToggleVisualEQ
 
 type State =
     { Project: DLCProject
@@ -407,4 +408,5 @@ type State =
       Localizer: IStringLocalizer
       AlbumArtLoader: IBitmapLoader
       DatabaseConnector: ToneCollection.IDatabaseConnector
-      ExitHandler: IExitHandler }
+      ExitHandler: IExitHandler
+      ShowVisualEQ: bool }
